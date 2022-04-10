@@ -1,6 +1,8 @@
 export class Quote {
-    showAuthor?:boolean
+    showAuthor?:boolean;
     
+    
+
         
     
 
