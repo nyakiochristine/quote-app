@@ -1,14 +1,16 @@
 <div class="container-fluid">
     <h3>Add Your Quote Here</h3>
-    <form>
+    <form (ngSubmit)='submitQuote()' #quoteForm="ngForm">
+        {{quoteForm.value|json}}
+
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name"  name="name"required>
+            <input type="text" class="form-control" id="name"  name="name" ngModel required>
         </div>
 
         <div class="form-group">
             <label for="quote">Write Your Quote</label>
-            <textarea name="quote" id="quote" cols="20" rows="10" class="form-control"></textarea>
+            <textarea name="quote" id="quote" cols="20" rows="10" class="form-control" ngModel></textarea>
         </div>
         <button type="submit" class="btn  btn-primary"> Add Qoute!</button>
     </form>
