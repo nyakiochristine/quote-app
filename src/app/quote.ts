@@ -9,7 +9,7 @@ export class Quote {
     
     
     {
-        this.showAuthor= false;
+        this.showAuthor= true;
     }
 
     

@@ -1,24 +1,29 @@
 <div class="container-fluid">
     <h1 class="heading text-center">Quotes For You</h1>
     <hr>
-    <h3 class="sub text-center">
+    <h2 class="sub text-center">
     Get Motivated to learn more and be more in life!
-    </h3>
+    </h2>
     <div class="row">
         <div class="col-sm-6">
             <div *ngFor="let quote of quotes; let i=index">
-              <h4 id="i">{{quote.quo}}</h4>
+              <h4 id={{i}} appHighlight>{{quote.quo}} completed on {{quote.completeDate|date}}</h4>
           
            
-           <button class="btn btn-primary" (click)="toggleDet(1)">Read More</button>
+           <button class="btn btn-primary" (click)="toggleDet(i)">Read More</button>
            <app-quote-details></app-quote-details>
+           <div *ngIf="quote.showAuthor">
+               <app-quote-details {{quote}} (isComplete)="deleteQuote($event, 0)"></app-quote-details>
+           </div>
+          
+          
+              
+         
            
            
 
 
-           *ngIf='quote.author'>
-               <!-- <app-quote-details [quote ]='quote' (isComplete)='deleteQuote($event, 1)' ></app-quote-details>-->
-
+           
             </div>
 
             
@@ -32,5 +37,6 @@
            <app-quotes-form (addQuote)="addNewQuote($event)"></app-quotes-form>
         </div>
     </div>
+    <footer>CopyRights Reserved &copy;2022 Christine Mwangi</footer>
 
 </div>

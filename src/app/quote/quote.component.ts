@@ -28,7 +28,7 @@ export class QuoteComponent implements OnInit {
   
   ];
 
-  toggleDet(index:number){
+  toggleDet(index:any){
     this.quotes[index].showAuthor= !this.quotes[index].showAuthor
   }
 
