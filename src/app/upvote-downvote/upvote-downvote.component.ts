@@ -6,15 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upvote-downvote.component.css']
 })
 export class UpvoteDownvoteComponent implements OnInit {
-  numberOfUpvotes: number= 0;
+  numberOfVotes: number= 0;
   upvoteButtonClick(){
-    this.numberOfUpvotes++;
+    this.numberOfVotes++;
 
   }
 
-  numberOfDownvotes:number= 0;
+  
   downvoteButtonClick(){
-    this.numberOfDownvotes++;
+    this.numberOfVotes--;
   }
 
   constructor() { }
