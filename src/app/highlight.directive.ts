@@ -6,9 +6,11 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class HighlightDirective {
 
   constructor(public el: ElementRef) { 
+   
     
 
   }
+  
   
 
 }
