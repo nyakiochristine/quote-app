@@ -19,4 +19,17 @@
 }
 p{
     font-size: 25px;
+
+}
+button{
+    padding: 20px;
+}
+.btn {
+    color: rgb(40, 38, 38);
+
+}
+.date{
+    border: 1px solid;
+    color: rgb(12, 12, 12);
+    size:50px;
 }
