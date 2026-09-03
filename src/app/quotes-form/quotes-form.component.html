@@ -1,30 +1,20 @@
-<div class="container-fluid">
-    <h3>Add Your Quote Here</h3>
-    <form (ngSubmit)='submitQuote()' #quoteForm="ngForm">
-        
+<form class="quote-form" (ngSubmit)="submitQuote(quoteForm)" #quoteForm="ngForm" novalidate>
+    <div class="form-field">
+        <label for="author">Your name</label>
+        <input type="text" id="author" name="author" [(ngModel)]="newQuote.author" #author="ngModel" required autocomplete="name" placeholder="e.g. Maya Angelou">
+        <span class="field-error" *ngIf="author.invalid && (author.dirty || author.touched)">Please add your name.</span>
+    </div>
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name"  name="name" [(ngModel)]= "newQuote.author" #name="ngModel">
-            <div hidden="name.valid| name.pristine" class="alert alert-danger"></div>
-            <p>Name is required</p>
-        </div>
+    <div class="form-field">
+        <label for="quote-text">Your quote</label>
+        <textarea id="quote-text" name="quoteText" rows="5" [(ngModel)]="newQuote.quo" #quoteText="ngModel" required minlength="4" placeholder="Write something worth remembering..."></textarea>
+        <span class="field-error" *ngIf="quoteText.invalid && (quoteText.dirty || quoteText.touched)">Please add a quote.</span>
+    </div>
 
-        <div class="form-group">
-            <label for="describe">Write Your Quote</label>
-            <textarea name="describe" id="describe" cols="20" rows="10" class="form-control" [(ngModel)]="newQuote.quo" #describe="ngModel"></textarea>
+    <div class="form-field">
+        <label for="quote-date">Date</label>
+        <input type="date" id="quote-date" name="completeDate" [(ngModel)]="dateValue" #quoteDate="ngModel" required>
+    </div>
 
-            <div hidden="describe.valid| describe.pristine" class="alert alert-danger"></div>
-            <p>Quote is required</p>
-
-        
-        </div>
-
-        <div class="form-group">
-            <label for="">Time and Date</label>
-            <input class="date" id="describe"  name="completeDate" [(ngModel)]="newQuote.completeDate" required>
-            <div hidden = "describe.valid|decribe.pristine"></div>
-        </div>
-        <button type="submit" class="btn  btn-primary" > Add Qoute!</button>
-    </form>
-</div>
+    <button type="submit" class="submit-button" [disabled]="quoteForm.invalid">Add to collection <span aria-hidden="true">&#8594;</span></button>
+</form>

@@ -1,6 +1,7 @@
-<!--buttons for upvote and downvoting-->
-<div>
-   <p>{{numberOfVotes}}</p>
-      <button type="button" class="btn btn-success" (click)="upvoteButtonClick()" >Upvote</button>
-      <button type="button" class="btn btn-warning" (click)="downvoteButtonClick()" >Downvote</button>
+<div class="vote-controls" aria-label="Vote on this quote">
+   <span class="vote-score">{{ numberOfVotes }} {{ numberOfVotes === 1 ? 'vote' : 'votes' }}</span>
+   <div class="vote-buttons">
+      <button type="button" class="vote-button" (click)="upvoteButtonClick()" aria-label="Upvote this quote">&#8593; Upvote</button>
+      <button type="button" class="vote-button" (click)="downvoteButtonClick()" aria-label="Downvote this quote">&#8595; Downvote</button>
+   </div>
 </div>

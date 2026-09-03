@@ -1,5 +1,7 @@
-<p>{{quote?.author}}</p>
-<button type="button" class="btn btn-danger" (click)="quoteDelete(true)">Delete</button>
+<div class="details-row">
+	<p class="author">{{quote?.author}}</p>
+	<button type="button" class="delete-button" (click)="quoteDelete(true)">Delete quote</button>
+</div>
 <app-upvote-downvote></app-upvote-downvote>
 
 

@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { EventEmitter, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Quote } from '../quote';
 
 
@@ -11,6 +12,7 @@ import { Quote } from '../quote';
 })
 export class QuotesFormComponent implements OnInit {
   newQuote=new Quote(0,'','',new Date())
+  dateValue = this.formatDate(new Date());
  
   
   @Output()addQuote = new EventEmitter<Quote>();
@@ -21,9 +23,20 @@ export class QuotesFormComponent implements OnInit {
   
   
 
-  submitQuote(){
-    this.addQuote.emit(this.newQuote)
-  
+  submitQuote(form: NgForm){
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    this.addQuote.emit(new Quote(0, this.newQuote.quo.trim(), this.newQuote.author.trim(), new Date(this.dateValue)));
+    this.newQuote = new Quote(0, '', '', new Date());
+    this.dateValue = this.formatDate(new Date());
+    form.resetForm(this.newQuote);
+  }
+
+  private formatDate(date: Date): string {
+    return date.toISOString().split('T')[0];
   }
   
   

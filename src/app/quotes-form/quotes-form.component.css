@@ -1,0 +1,75 @@
+.quote-form {
+	display: grid;
+	gap: 20px;
+}
+
+.form-field {
+	display: grid;
+	gap: 8px;
+}
+
+label {
+	color: #344054;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+input,
+textarea {
+	width: 100%;
+	border: 1px solid #cbd5e1;
+	border-radius: 4px;
+	padding: 12px 13px;
+	background: #ffffff;
+	color: #1d2939;
+	font-size: 14px;
+	transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: #98a2b3;
+}
+
+input:focus,
+textarea:focus {
+	border-color: #3454d1;
+	box-shadow: 0 0 0 3px rgba(52, 84, 209, 0.12);
+	outline: 0;
+}
+
+.field-error {
+	color: #b42318;
+	font-size: 12px;
+}
+
+.submit-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border: 0;
+	border-radius: 4px;
+	padding: 14px 16px;
+	background: #3454d1;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 700;
+	transition: background 160ms ease, transform 160ms ease;
+}
+
+.submit-button:hover:not(:disabled) {
+	background: #243b9b;
+	transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+	background: #aebaf0;
+	cursor: not-allowed;
+}
