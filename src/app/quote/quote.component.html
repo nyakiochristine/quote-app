@@ -1,38 +1,52 @@
-<div class="container-fluid">
-    <h1 class="heading text-center">Quotes For You</h1>
-    <hr>
-    <h2 class="sub  text-center">
-    Get Motivated to learn more and be more in life!
-    </h2>
-    <div class="row">
-        <div class="col-sm-6">
-            <div *ngFor="let quote of quotes; let i=index">
-              <p id={{i}} >{{quote.quo}}, completed on {{quote.completeDate}}</p>
-          
-           
-           <button class="btn btn-primary" (click)="toggleDet(i)">Read More</button>
-          
-            <div  *ngIf="quote.showAuthor">
-            
-           <app-quote-details [quote]="quote"(isComplete)="deleteQuote(i,i)"></app-quote-details>
-           </div>           
-           
+<main class="page-shell">
+    <header class="hero">
+        <div class="brand-mark" aria-hidden="true">Q</div>
+        <p class="eyebrow">A small collection of big ideas</p>
+        <h1>Quotes for your <span>next chapter.</span></h1>
+        <p class="hero-copy">Keep the words that move you close. Read, reflect, and add a little wisdom of your own.</p>
+    </header>
 
-
-           
+    <div class="content-grid">
+        <section class="quotes-section" aria-labelledby="collection-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">The collection</p>
+                    <h2 id="collection-title">Words worth keeping</h2>
+                </div>
+                <span class="quote-count">{{ quotes.length }} {{ quotes.length === 1 ? 'quote' : 'quotes' }}</span>
             </div>
 
-            
+            <div class="quote-list">
+                <article class="quote-card" *ngFor="let quote of quotes; let i=index">
+                    <div class="quote-number" aria-hidden="true">0{{ i + 1 }}</div>
+                    <blockquote id="quote-{{ i }}">“{{ quote.quo }}”</blockquote>
+                    <div class="quote-footer">
+                        <span class="quote-date">Added {{ quote.completeDate | date:'MMM d, y' }}</span>
+                        <button class="text-button" type="button" (click)="toggleDet(i)" [attr.aria-expanded]="quote.showAuthor" [attr.aria-controls]="'details-' + i">
+                            {{ quote.showAuthor ? 'Hide details' : 'Read more' }}
+                        </button>
+                    </div>
+                    <div *ngIf="quote.showAuthor" id="details-{{ i }}" class="quote-details">
+                        <app-quote-details [quote]="quote" (isComplete)="deleteQuote($event, i)"></app-quote-details>
+                    </div>
+                </article>
+            </div>
 
-            
+            <p class="empty-state" *ngIf="quotes.length === 0">Your collection is waiting for its first thought.</p>
+        </section>
 
-            
-        </div>
-
-        <div class="col-sm-6">
-           <app-quotes-form (addQuote)="addNewQuote($event)"></app-quotes-form>
-        </div>
+        <aside class="form-panel" aria-labelledby="form-title">
+            <div class="panel-intro">
+                <p class="eyebrow">Make it yours</p>
+                <h2 id="form-title">Add a quote</h2>
+                <p>Leave a line here for the next person who needs it.</p>
+            </div>
+            <app-quotes-form (addQuote)="addNewQuote($event)"></app-quotes-form>
+        </aside>
     </div>
-    <footer>CopyRights Reserved &copy;2022 Christine Mwangi</footer>
 
-</div>
+    <footer class="site-footer">
+        <span>Quote app</span>
+        <span>Built with intention · 2024</span>
+    </footer>
+</main>
